@@ -1,0 +1,3 @@
+/Users/aleksandrsuslin/desktop/game_example/build/CMakeFiles/my_program.dir
+/Users/aleksandrsuslin/desktop/game_example/build/CMakeFiles/edit_cache.dir
+/Users/aleksandrsuslin/desktop/game_example/build/CMakeFiles/rebuild_cache.dir

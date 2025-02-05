@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/aleksandrsuslin/Desktop/game_example",
+      "program": "/Users/aleksandrsuslin/Desktop/game_example/build/Debug/outDebug"
+    }
+  ]
+}
