@@ -10,8 +10,9 @@ cd tanks-2d
 cd game_example
 cd build
 make
-./my_program
+./tanks
 
 ```
+If you want to watch a version of the game that is not yet working, then at the gameplay stage press TAB to go to GAME OVER frame
 
-...
+
