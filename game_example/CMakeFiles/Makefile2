@@ -57,7 +57,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/aleksandrsuslin/Desktop/tanks-2d/game_example
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build
+CMAKE_BINARY_DIR = /Users/aleksandrsuslin/Desktop/tanks-2d/game_example
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/tanks.dir/clean
 CMakeFiles/tanks.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tanks.dir/build.make CMakeFiles/tanks.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tanks.dir/build.make CMakeFiles/tanks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles --progress-num=1,2 "Built target tanks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/CMakeFiles --progress-num=1,2 "Built target tanks"
 .PHONY : CMakeFiles/tanks.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tanks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tanks.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/CMakeFiles 0
 .PHONY : CMakeFiles/tanks.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ tanks: CMakeFiles/tanks.dir/rule
 # codegen rule for target.
 CMakeFiles/tanks.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tanks.dir/build.make CMakeFiles/tanks.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles --progress-num=1,2 "Finished codegen for target tanks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/CMakeFiles --progress-num=1,2 "Finished codegen for target tanks"
 .PHONY : CMakeFiles/tanks.dir/codegen
 
 # clean rule for target.

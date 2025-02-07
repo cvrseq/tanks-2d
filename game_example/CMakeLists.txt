@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD 11)
 
 find_package(raylib REQUIRED)
 
-add_executable(my_program main.c)
+add_executable(tanks main.c)
 
-target_link_libraries(my_program raylib)
+target_link_libraries(tanks raylib)

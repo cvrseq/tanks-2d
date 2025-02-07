@@ -7,10 +7,10 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/CMakeLists.txt"
   "CMakeFiles/3.31.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.3/CMakeSystem.cmake"
+  "CMakeLists.txt"
   "/opt/homebrew/lib/cmake/raylib/raylib-config-version.cmake"
   "/opt/homebrew/lib/cmake/raylib/raylib-config.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCCompiler.cmake.in"

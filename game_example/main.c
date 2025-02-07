@@ -1,10 +1,26 @@
 #include "raylib.h"
 #include <stdlib.h>
+#include <math.h> 
 
-#define MAP_WIDTH   20
-#define MAP_HEIGHT  15
+#define SQUARE_SIZE 40;
 
-typedef enum GameScreen { TITLE, GAMEPLAY, END } GameScreen;
+    static const int screenWidth = 1500;
+    static const int screenHeight = 1000;
+
+    static bool gameOver = false; 
+    static Vector2 offset = { 0 };
+    static bool allowMove = false; 
+
+
+
+    static void InitGame(void);
+    static void UpdateGame(void); 
+    static void DrawGame(void); 
+
+
+
+
+typedef enum GameScreen { TITLE, GAMEPLAY, GAME, END } GameScreen;
 
 typedef enum TileType //реализовать плитки на мапе
 {
@@ -41,10 +57,11 @@ typedef struct Tank //возможно добавить выстрелы чер�
 } Tank;
 
 
+
+
+
 int main(void)
 {
-    const int screenWidth = 1500;
-    const int screenHeight = 1000;
 
     InitWindow(screenWidth, screenHeight, "TANKS");
     
@@ -55,31 +72,50 @@ int main(void)
     {
         if (currentScreen == TITLE)
         {
-            if (IsKeyPressed(KEY_ENTER)) 
+            if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE)) 
             { 
                 currentScreen = GAMEPLAY; 
             }
         }
         else if (currentScreen == GAMEPLAY)
         {
-            
+            if(IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE))
+            {
+                currentScreen = GAME;
+            }
         }
         
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
+        float blinkPeriod = 1.5f; 
+        float timeElapsed = GetTime();
+        float t = fmod(timeElapsed, blinkPeriod) / blinkPeriod;
+        float alphaFactor = (sinf(t * 2 * PI - PI / 2) + 1) / 2;
+
+        int alpha = (int)(alphaFactor * 255);
+        Color blinkingColor = (Color){DARKGREEN.r, DARKGREEN.g, DARKGREEN.b, alpha};
+
         switch (currentScreen)
         {
             case TITLE:
                 DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
-                DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN); 
-                DrawText("PRESS ENTER or TAP to Jump to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
+                DrawText("HARDCORE TANKS 2D", 20, 20, 40, DARKGREEN); 
+                DrawText("PRESS ENTER or TAP to Jump to GAME INSTRUCTION", 120, 220, 20, DARKGREEN);
                 break;
                 
             case GAMEPLAY:
-                DrawRectangle(0, 0, screenWidth, screenHeight, RED);
-                DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON); 
-                DrawText("GAME PLAY", 150, 250, 50, MAROON);
+                DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+                DrawText("GAMEPLAY INSTRUCTION", 20, 20, 40, DARKGREEN); 
+                DrawText("MOVE THE TANK ON THE MAP USING THE WASD KEYS,", 30, 250, 50, DARKGREEN);
+                DrawText("SHOOT THROUGH THE SPACEBAR,", 300, 350, 50, DARKGREEN);
+                DrawText("ENJOY THE GAME:)", 350, 500, 80, DARKGREEN);
+                DrawText("PRESS ENTER or TAP to Jump to GAMEPLAY", 500, 750, 20, blinkingColor);
+                break;
+                
+
+            case GAME: 
+                InitGame(); 
                 break;
                 
         }
@@ -89,4 +125,14 @@ int main(void)
 
     CloseWindow();
     return 0;
+}
+
+void InitGame(void)
+{
+    gameOver = 0; 
+    allowMove = false; 
+
+    offset.x = screenWidth%SQUARE_SIZE; 
+    offset.y = screenHeight%SQUARE_SIZE;
+
 }

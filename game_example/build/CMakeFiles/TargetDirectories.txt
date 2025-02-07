@@ -1,3 +1,3 @@
-/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles/my_program.dir
+/Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles/tanks.dir
 /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles/edit_cache.dir
 /Users/aleksandrsuslin/Desktop/tanks-2d/game_example/build/CMakeFiles/rebuild_cache.dir
