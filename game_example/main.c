@@ -7,7 +7,7 @@
 #define ENEMY_SPEED 2.0f
 
 // Новые константы для пуль
-#define MAX_BULLETS 100
+#define MAX_BULLETS 1000
 #define BULLET_SPEED 5.0f
 #define BULLET_RADIUS 5
 
@@ -58,7 +58,7 @@ typedef struct Tank {
 static const int count = 1;  
 
 static const int screenWidth = 1500;
-static const int screenHeight = 1000;
+static const int screenHeight = 900;
 
 static bool gameOver = false; 
 static Vector2 offset = { 0 };
@@ -288,14 +288,14 @@ void DrawDetailedTank(Vector2 position, Vector2 size, Color bodyColor, Color tur
     // Рисуем пушку: линия, выходящая из центра башни вверх
     Vector2 turretCenter = { turretPos.x + turretSize.x / 2, turretPos.y + turretSize.y / 2 };
     Vector2 cannonEnd = { turretCenter.x, turretCenter.y - turretSize.y * 0.8f };
-    DrawLineEx(turretCenter, cannonEnd, 5, BLACK);
+    DrawLineEx(turretCenter, cannonEnd, 5, MAROON);
 }
 
 // Функция отрисовки врагов с детализированным танком
 void DrawEnemies(void) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (enemies[i].active) {
-            DrawDetailedTank(enemies[i].position, (Vector2){40, 40}, RED, GRAY);
+            DrawDetailedTank(enemies[i].position, (Vector2){40, 40}, RED, MAROON);
         }
     }
 }
@@ -340,9 +340,29 @@ void UpdateBullets(void) {
             enemyBullets[i].position.x += enemyBullets[i].velocity.x;
             enemyBullets[i].position.y += enemyBullets[i].velocity.y;
             // Если пуля вышла за пределы экрана, деактивируем её
-            if (enemyBullets[i].position.x < 0 || enemyBullets[i].position.x > screenWidth ||
+            /*if (enemyBullets[i].position.x < 0 || enemyBullets[i].position.x > screenWidth ||
                 enemyBullets[i].position.y < 0 || enemyBullets[i].position.y > screenHeight) {
                 enemyBullets[i].active = false;
+            }*/
+            if (enemyBullets[i].position.x - BULLET_RADIUS < 0)
+            {
+                enemyBullets[i].position.x = BULLET_RADIUS;
+                enemyBullets[i].velocity.x = -enemyBullets[i].velocity.x;
+            }
+            if (enemyBullets[i].position.x + BULLET_RADIUS > screenWidth)
+            {
+                enemyBullets[i].position.x = screenWidth - BULLET_RADIUS;
+                enemyBullets[i].velocity.x = -enemyBullets[i].velocity.x;
+            }
+            if (enemyBullets[i].position.y - BULLET_RADIUS < 0)
+            {
+                enemyBullets[i].position.y = BULLET_RADIUS;
+                enemyBullets[i].velocity.y = -enemyBullets[i].velocity.y;
+            } 
+            if (enemyBullets[i].position.y + BULLET_RADIUS > screenHeight)
+            {
+                enemyBullets[i].position.y = screenHeight - BULLET_RADIUS;
+                enemyBullets[i].velocity.y = -enemyBullets[i].velocity.y;
             }
         }
     }
